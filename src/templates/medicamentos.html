@@ -14,10 +14,10 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
-				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
-				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
-				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+				<li><a href="">Inicio</a></li>
+				<li><a href="">Medicamentos</a></li>
+				<li><a href="">Nueva Boleta</a></li>
+				<li><a href="">Historial</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -39,27 +39,20 @@
 				</tr>
 			</thead>
 			<tbody>
+				{% for medi in medicamentos %}
 				<tr>
-					<td>001</td>
-					<td>Paracetamol</td>
-					<td><input type="checkbox"></td>
-					<td>20</td>
-					<td>$2.50</td>
+					<td>{{ medi[0] }}</td>
+					<td>{{ medi[1] }}</td>
+					<td class="checkbox-custom">
+						<input type="checkbox" id="{{ medi[0] }}" name="{{ medi[0] }}" {% if medi[2]==1 %} checked {%
+							endif %} disabled>
+						<label for="{{ medi[0] }}"></label>
+					</td>
+
+					<td>{{ medi[4] }}</td>
+					<td>{{ medi[3] }}</td>
 				</tr>
-				<tr>
-					<td>002</td>
-					<td>Ibuprofeno</td>
-					<td><input type="checkbox"></td>
-					<td>10</td>
-					<td>$3.00</td>
-				</tr>
-				<tr>
-					<td>003</td>
-					<td>Aspirina</td>
-					<td><input type="checkbox"></td>
-					<td>15</td>
-					<td>$1.50</td>
-				</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</main>

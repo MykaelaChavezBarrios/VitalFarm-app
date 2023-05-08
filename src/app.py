@@ -1,12 +1,22 @@
-from flask import Flask, render_template
-from flask_cors import CORS
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
 
 app = Flask(__name__)
-CORS(app=app)
+
+app.config["MYSQL_HOST"] = "localhost"
+app.config["MYSQL_USER"] = "root"
+app.config["MYSQL_PASSWORD"] = "clavenueva"
+app.config["MYSQL_DB"] = "dbfacturacion"
+mysql = MySQL(app)
 
 
 @app.route("/")
 def index():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM maesuc")
+    sucursales = cur.fetchall()
+    cur.close()
     return render_template("sedeInicio.html")
 
 

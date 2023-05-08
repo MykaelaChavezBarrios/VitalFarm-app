@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VitalFarm</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/boletaExtendida.css') }}">
+    <script src="{{ url_for('static', filename='jsPDF/jspdf.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/boletaExtendida.js') }}"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>VitalFarm</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('menu')}}">Inicio</a></li>
+                <li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+                <li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+                <li><a href="{{ url_for('historial')}}">Historial</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="btn-group">
+
+            <button class="download-button" id="btnGenerarPDF">Descargar</button>
+        </div>
+
+
+
+        <div class="boleta" id="boletaPDF">
+            <div class="titulo">
+                <h1>VitalFarm</h1>
+                <div class="ruc">
+                    <p>R.U.C. 16516</p>
+                    <p>Boleta de Venta</p>
+                    <p>B0101</p>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ibuprofeno</td>
+                        <td>1</td>
+                        <td>$20.00</td>
+                        <td>$20.00</td>
+                    </tr>
+                    <tr>
+                        <td>Livolin</td>
+                        <td>2</td>
+                        <td>$30.00</td>
+                        <td>$60.00</td>
+                    </tr>
+                    <tr>
+                        <td>Aspirina</td>
+                        <td>1</td>
+                        <td>$50.00</td>
+                        <td>$50.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <div class="sumtotal">
+                <div class="titulo">
+                    <h1></h1>
+                    <div class="opGravadas">
+                        <p>Op. Gravadas = 20</p>
+                        <p>IGV = 0.50</p>
+                        <hr>
+                        <p>Total = 20 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

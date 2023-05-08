@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+    
+    header {
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    }
+    
+    nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    }
+    
+    nav li {
+    margin-left: 20px;
+    }
+    
+    nav a {
+    color: #fff;
+    text-decoration: none;
+    }
+    
+    form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    }
+    
+    form input[type="text"] {
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+   
+    width: 100%;
+    border-color: black ;
+    }
+    
+    form button[type="submit"] {
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    }
+    
+    main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    }
+    
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    
+    table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    }
+    
+    table th {
+    background-color: #007bff;
+    color: #fff;
+    }
+    
+    table tr:nth-child(even) {
+    background-color: #f8f9fa;
+    }
+    
+    input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    }

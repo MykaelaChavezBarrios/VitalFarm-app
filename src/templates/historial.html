@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>VitalFarm</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/historial.css') }}">
+</head>
+
+<body>
+	<header>
+		<div class="logo">
+			<h1>VitalFarm</h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
+				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Fecha</th>
+					<th>DNI</th>
+					<th>Cliente</th>
+					<th>Total</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>B0101</td>
+					<td>10/02/2023</td>
+					<td>72040598</td>
+					<td>Diego Mendoza Polanco</td>
+					<td>$20.50</td>
+					<td><button class="ver" id="ver-1"><a href="{{ url_for('boletaExtendida')}}">Ver</a></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+</body>
+
+</html>

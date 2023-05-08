@@ -1,20 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
-import MySQLdb.cursors
+import mysql.connector
 
 app = Flask(__name__)
 
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "clavenueva"
-app.config["MYSQL_DB"] = "dbfacturacion"
-mysql = MySQL(app)
+mydb = mysql.connector.connect(
+    host="localhost", user="root", password="clavenueva", database="dbfacturacion"
+)
 
 
 @app.route("/")
 def index():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM maesuc")
+    cur = mydb.cursor()
+    cur.execute("CALL ver_sucursales()")
     sucursales = cur.fetchall()
     cur.close()
     return render_template("sedeInicio.html", sucursales=sucursales)

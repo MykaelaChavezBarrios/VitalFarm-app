@@ -82,3 +82,16 @@ body {
     margin: 0;
     padding: 0;
     }
+
+    .ver{
+      background-color: #fffdfd;
+      border-color: #007bff;
+    }
+    a{
+        color: #007bff;
+        text-decoration: none;
+     }
+    
+     a:visited {
+        color: #007bff;
+      }

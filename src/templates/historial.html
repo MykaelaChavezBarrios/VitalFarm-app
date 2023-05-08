@@ -14,10 +14,10 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
-				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
-				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
-				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+				<li><a href="">Inicio</a></li>
+				<li><a href="">Medicamentos</a></li>
+				<li><a href="">Nueva Boleta</a></li>
+				<li><a href="">Historial</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -35,14 +35,17 @@
 				</tr>
 			</thead>
 			<tbody>
+
+				{% for fact in facturas %}
 				<tr>
-					<td>B0101</td>
-					<td>10/02/2023</td>
-					<td>72040598</td>
-					<td>Diego Mendoza Polanco</td>
-					<td>$20.50</td>
+					<td>{{ fact[0] }}</td>
+					<td>{{ fact[1] }}</td>
+					<td>{{ fact[2] }}</td>
+					<td>{{ fact[3] }}</td>
+					<td>{{ fact[4] }}</td>
 					<td><button class="ver" id="ver-1"><a href="{{ url_for('boletaExtendida')}}">Ver</a></button></td>
 				</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</main>

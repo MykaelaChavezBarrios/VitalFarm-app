@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>VitalFarm</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/agregarproducto.css') }}">
+</head>
+
+<body>
+	<header>
+		<h1>VitalFarm</h1>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
+				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="header-section">
+		<h2>Agregar Producto</h2>
+		<div class="btn-group">
+			<button><a href="{{ url_for('nuevaBoleta')}}">Guardar</a></button>
+			<button><a href="{{ url_for('nuevaBoleta')}}">Cancelar</a></button>
+		</div>
+	</section>
+	<div class="search">
+		<form>
+			<input type="text" placeholder="Buscar...">
+			<button type="submit">Buscar</button>
+		</form>
+	</div><br>
+	<section class="formulario">
+
+		<div class="contenedor">
+			<label for="codigo">Código:</label>
+			<input type="text" id="codigo" name="codigo">
+			<label for="descripcion">Descripción:</label>
+			<input type="text" id="descripcion" name="descripcion">
+			<label for="controlado">Controlado:</label>
+			<input type="text" id="controlado" name="controlado">
+			<label for="stock">Stock:</label>
+			<input type="text" id="stock" name="stock">
+			<label for="precio-unitario">Precio Unitario:</label>
+			<input type="text" id="precio-unitario" name="precio-unitario">
+		</div>
+	</section>
+
+</body>
+
+</html>

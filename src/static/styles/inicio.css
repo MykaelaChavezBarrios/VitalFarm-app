@@ -52,3 +52,11 @@ h2 {
 p {
 	margin-bottom: 0;
 }
+ a{
+	color: #007bff;
+	text-decoration: none;
+ }
+
+ a:visited {
+	color: #007bff;
+  }

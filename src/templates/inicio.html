@@ -12,10 +12,10 @@
 		<h1>VitalFarm</h1>
 		<nav>
 			<ul>
-				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
-				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+				<li><a href="{{ url_for('menu', id=sucursal[0]) }}">Inicio</a></li>
+				<li><a href="{{ url_for('medicamentos', id=sucursal[0]) }}">Medicamentos</a></li>
 				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
-				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+				<li><a href="{{ url_for('historial', id=sucursal[0]) }}">Historial</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -23,17 +23,17 @@
 		<section>
 			<h2>Medicamentos</h2>
 			<p>Aquí puedes ver la lista de los medicamentos disponibles.</p>
-			<a href="{{ url_for('medicamentos')}}">Ingresar</a>
+			<a href="{{ url_for('medicamentos', id=sucursal[0]) }}">Ingresar</a>
 		</section>
 		<section>
 			<h2>Nueva Boleta</h2>
 			<p>Aquí puedes crear una nueva boleta.</p>
-			<a href="{{ url_for('nuevaBoleta')}}">Ingresar</a>
+			<a href="">Ingresar</a>
 		</section>
 		<section>
 			<h2>Historial</h2>
 			<p>Aquí puedes ver el historial de tus compras.</p>
-			<a href="{{ url_for('historial')}}">Ingresar</a>
+			<a href="{{ url_for('historial', id=sucursal[0]) }}">Ingresar</a>
 		</section>
 	</main>
 </body>

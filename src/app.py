@@ -4,28 +4,48 @@ import mysql.connector
 
 app = Flask(__name__)
 
-mydb = mysql.connector.connect(
-    host="localhost", user="root", password="clavenueva", database="dbfacturacion"
-)
+
+def connect():
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="clavenueva",
+        database="dbfacturacion",
+    )
+    return mydb
 
 
 @app.route("/")
 def index():
+    mydb = connect()
     cur = mydb.cursor()
     cur.execute("CALL ver_sucursales()")
     sucursales = cur.fetchall()
     cur.close()
+    mydb.close()
     return render_template("sedeInicio.html", sucursales=sucursales)
 
 
-@app.route("/menu")
-def menu():
-    return render_template("inicio.html")
+@app.route("/sucursal/<int:id>")
+def menu(id):
+    mydb = connect()
+    cur = mydb.cursor()
+    cur.execute("CALL ver_sucursal(%s)", (id,))
+    sucursal = cur.fetchone()
+    cur.close()
+    mydb.close()
+    return render_template("inicio.html", sucursal=sucursal)
 
 
-@app.route("/medicamentos")
-def medicamentos():
-    return render_template("medicamentos.html")
+@app.route("/sucursal/<int:id>/medicamentos")
+def medicamentos(id):
+    mydb = connect()
+    cur = mydb.cursor()
+    cur.execute("CALL ver_inventario(%s)", (id,))
+    medicamentos = cur.fetchall()
+    cur.close()
+    mydb.close()
+    return render_template("medicamentos.html", medicamentos=medicamentos)
 
 
 @app.route("/nuevaBoleta")
@@ -33,9 +53,15 @@ def nuevaBoleta():
     return render_template("nuevaboleta.html")
 
 
-@app.route("/historial")
-def historial():
-    return render_template("historial.html")
+@app.route("/sucursal/<int:id>/historial")
+def historial(id):
+    mydb = connect()
+    cur = mydb.cursor()
+    cur.execute("CALL ver_historial(%s)", (id,))
+    facturas = cur.fetchall()
+    cur.close()
+    mydb.close()
+    return render_template("historial.html", facturas=facturas)
 
 
 @app.route("/boletaExtendida")

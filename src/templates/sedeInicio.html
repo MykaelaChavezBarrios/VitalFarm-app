@@ -22,17 +22,27 @@
 					</tr>
 				</thead>
 				<tbody>
+					{% for sucursal in sucursales %}
+					<tr>
+						<td>
+							{{ sucursal[1] }}
+						</td>
+						<td>
+							<a href="{{ url_for('menu', id=sucursal[0]) }}">Ingresar</a>
+						</td>
+					</tr>
+					{% endfor %}
 					<tr>
 						<td>Ormeño</td>
-						<td><button><a href="{{ url_for('menu')}}">Ingresar</a></button></td>
+						<td><button><a href="">Ingresar</a></button></td>
 					</tr>
 					<tr>
 						<td>Cerro Juli</td>
-						<td><button><a href="{{ url_for('menu')}}">Ingresar</a></button></td>
+						<td><button><a href="">Ingresar</a></button></td>
 					</tr>
 					<tr>
 						<td>Mariano Melgar</td>
-						<td><button><a href="{{ url_for('menu')}}">Ingresar</a></button></td>
+						<td><button><a href="">Ingresar</a></button></td>
 					</tr>
 				</tbody>
 			</table>

@@ -17,7 +17,7 @@ def index():
     cur.execute("SELECT * FROM maesuc")
     sucursales = cur.fetchall()
     cur.close()
-    return render_template("sedeInicio.html")
+    return render_template("sedeInicio.html", sucursales=sucursales)
 
 
 @app.route("/menu")

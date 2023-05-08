@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>VitalFarm</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/medicamentos.css') }}">
+</head>
+
+<body>
+	<header>
+		<div class="logo">
+			<h1>VitalFarm</h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
+				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div class="search">
+			<form>
+				<input type="text" placeholder="Buscar...">
+				<button type="submit">Buscar</button>
+			</form>
+		</div><br>
+		<table>
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Descripcion</th>
+					<th>Controlado</th>
+					<th>Stock</th>
+					<th>Precio Unit.</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>001</td>
+					<td>Paracetamol</td>
+					<td><input type="checkbox"></td>
+					<td>20</td>
+					<td>$2.50</td>
+				</tr>
+				<tr>
+					<td>002</td>
+					<td>Ibuprofeno</td>
+					<td><input type="checkbox"></td>
+					<td>10</td>
+					<td>$3.00</td>
+				</tr>
+				<tr>
+					<td>003</td>
+					<td>Aspirina</td>
+					<td><input type="checkbox"></td>
+					<td>15</td>
+					<td>$1.50</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+</body>
+
+</html>

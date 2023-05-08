@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>VitalFarm</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/inicio.css') }}">
+</head>
+
+<body>
+	<header>
+		<h1>VitalFarm</h1>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
+				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<h2>Medicamentos</h2>
+			<p>Aquí puedes ver la lista de los medicamentos disponibles.</p>
+			<a href="{{ url_for('medicamentos')}}">Ingresar</a>
+		</section>
+		<section>
+			<h2>Nueva Boleta</h2>
+			<p>Aquí puedes crear una nueva boleta.</p>
+			<a href="{{ url_for('nuevaBoleta')}}">Ingresar</a>
+		</section>
+		<section>
+			<h2>Historial</h2>
+			<p>Aquí puedes ver el historial de tus compras.</p>
+			<a href="{{ url_for('historial')}}">Ingresar</a>
+		</section>
+	</main>
+</body>
+
+</html>

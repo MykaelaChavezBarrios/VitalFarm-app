@@ -1,0 +1,62 @@
+/* Estilos generales */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Estilos para el contenedor principal */
+
+.contenedor {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+/* Estilos para la tabla */
+.table-container {
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+
+    ;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #dddddd;
+}

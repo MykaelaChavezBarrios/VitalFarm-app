@@ -31,6 +31,8 @@ deactivate
 pip install -r requirements.txt
 
 pip install flask-mysqldb
+
+pip install mysql-connector-python
 ```
 
 para obtener los paquetes empleados

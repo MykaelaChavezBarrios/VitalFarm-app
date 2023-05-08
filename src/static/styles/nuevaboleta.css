@@ -1,0 +1,208 @@
+/* Estilos generales */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para la sección de Nueva Boleta */
+
+.nueva-boleta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.nueva-boleta h2 {
+    margin: 0;
+}
+
+.nueva-boleta button {
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Estilos para el contenedor principal */
+
+.contenedor {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+/* Estilos para la tabla */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Estilos para los inputs */
+
+input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+input[type="number"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+/* Estilos para los botones */
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button[type="reset"] {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Estilos para las etiquetas */
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-section h2 {
+    margin: 0;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-section {
+  display: flex;
+  justify-content:space-around;
+  margin-bottom: 20px;
+}
+
+.form-section label,
+.form-section input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-section label {
+  font-weight: bold;
+}
+
+.form-section input[type="text"],
+.form-section input[type="number"],
+.form-section input[type="date"] {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.form-section .form-field-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-section .form-field-group:last-child {
+  margin-right: 0;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.opGravadas{
+    color: black;
+    padding: 1px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    border: 2px solid black;
+}
+

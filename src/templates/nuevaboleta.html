@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>VitalFarm</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/nuevaboleta.css') }}">
+</head>
+
+<body>
+	<header>
+		<h1>VitalFarm</h1>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
+				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
+				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="header-section">
+			<h2>Nueva Boleta</h2>
+			<div class="btn-group">
+				<button><a href="{{ url_for('agregarProducto')}}">Agregar Producto</a></button>
+				<button><a href="{{ url_for('boletaExtendida')}}">Guardar</a></button>
+				<button><a href="{{ url_for('menu')}}">Cancelar</a></button>
+			</div>
+		</section>
+		<section class="form-section">
+			<div>
+				<label for="codigo">Código:</label>
+				<input type="text" id="codigo" name="codigo" placeholder="Ingrese el código...">
+				<label for="cliente">Cliente:</label>
+				<input type="text" id="cliente" name="cliente" placeholder="Ingrese el nombre del cliente...">
+			</div>
+			<div>
+				<label for="fecha">Fecha:</label>
+				<input type="date" id="fecha" name="fecha">
+				<label for="dni">DNI:</label>
+				<input type="text" id="dni" name="dni" placeholder="Ingrese el DNI...">
+			</div>
+		</section>
+
+		<section class="table-section">
+			<table>
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Cantidad</th>
+						<th>Descripción</th>
+						<th>Precio Unitario</th>
+						<th>Importe</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>001</td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><button class="eliminar-producto" id="eliminar-producto-1">Eliminar</button></td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><button class="eliminar-producto" id="eliminar-producto-2">Eliminar</button></td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><input type="text"></td>
+						<td><button class="eliminar-producto" id="eliminar-producto-3">Eliminar</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<br>
+		<div class="sumtotal">
+			<div class="titulo">
+				<h1></h1>
+				<div class="opGravadas">
+					<p>Op. Gravadas = 20</p>
+					<p>IGV = 0.50</p>
+					<p>Total = 20 </p>
+				</div>
+			</div>
+
+		</div>
+	</main>
+</body>
+
+</html>

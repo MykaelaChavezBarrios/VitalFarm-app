@@ -60,3 +60,12 @@ td {
 th {
     background-color: #dddddd;
 }
+
+a{
+	color: #007bff;
+	text-decoration: none;
+ }
+
+ a:visited {
+	color: #007bff;
+  }

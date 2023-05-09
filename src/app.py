@@ -43,9 +43,12 @@ def medicamentos(id):
     cur = mydb.cursor()
     cur.execute("CALL ver_inventario(%s)", (id,))
     medicamentos = cur.fetchall()
+    sucursal = [id]
     cur.close()
     mydb.close()
-    return render_template("medicamentos.html", medicamentos=medicamentos)
+    return render_template(
+        "medicamentos.html", medicamentos=medicamentos, sucursal=sucursal
+    )
 
 
 @app.route("/nuevaBoleta")
@@ -64,9 +67,21 @@ def historial(id):
     return render_template("historial.html", facturas=facturas)
 
 
-@app.route("/boletaExtendida")
-def boletaExtendida():
-    return render_template("boletaExtendida.html")
+@app.route("/boleta_extendida/<int:id_boleta>")
+def boletaExtendida(id_boleta):
+    mydb = connect()
+    cur_cab = mydb.cursor()
+    cur_cab.execute("CALL factCabecera(%s)", (id_boleta,))
+    boletaC = cur_cab.fetchone()
+    cur_cab.close()
+    mydb.close()
+    mydb.connect()
+    cur_det = mydb.cursor()
+    cur_det.execute("CALL factDetalle(%s)", (id_boleta,))
+    boletaD = cur_det.fetchall()
+    cur_det.close()
+    mydb.close()
+    return render_template("boletaExtendida.html", boletaC=boletaC, boletaD=boletaD)
 
 
 @app.route("/agregarProducto")

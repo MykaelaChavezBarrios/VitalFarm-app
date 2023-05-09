@@ -87,11 +87,11 @@ body {
       background-color: #fffdfd;
       border-color: #007bff;
     }
-    a{
+    td a{
         color: #007bff;
         text-decoration: none;
      }
     
-     a:visited {
+    td a:visited {
         color: #007bff;
       }

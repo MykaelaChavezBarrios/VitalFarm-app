@@ -52,11 +52,10 @@ h2 {
 p {
 	margin-bottom: 0;
 }
- a{
+section a{
 	color: #007bff;
 	text-decoration: none;
- }
-
- a:visited {
+} 
+section a:visited {
 	color: #007bff;
   }

@@ -43,7 +43,9 @@
 					<td>{{ fact[2] }}</td>
 					<td>{{ fact[3] }}</td>
 					<td>{{ fact[4] }}</td>
-					<td><button class="ver" id="ver-1"><a href="{{ url_for('boletaExtendida')}}">Ver</a></button></td>
+					<td><button class="ver" id="ver-1"><a
+								href="{{ url_for('boletaExtendida', id_boleta=fact[0]) }}">Ver</a></button>
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>

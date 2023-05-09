@@ -16,10 +16,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="{{ url_for('menu')}}">Inicio</a></li>
-                <li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
-                <li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
-                <li><a href="{{ url_for('historial')}}">Historial</a></li>
+                <li><a href="">Inicio</a></li>
+                <li><a href="">Medicamentos</a></li>
+                <li><a href="">Nueva Boleta</a></li>
+                <li><a href="">Historial</a></li>
             </ul>
         </nav>
     </header>
@@ -34,10 +34,15 @@
         <div class="boleta" id="boletaPDF">
             <div class="titulo">
                 <h1>VitalFarm</h1>
+                <div>
+                    <p>Fecha: {{boletaC.1}}</p>
+                    <p>DNI: {{boletaC.2}}</p>
+                    <p>Cliente: {{boletaC.3}}</p>
+                </div>
                 <div class="ruc">
                     <p>R.U.C. 16516</p>
                     <p>Boleta de Venta</p>
-                    <p>B0101</p>
+                    <p>{{boletaC.0}}</p>
                 </div>
             </div>
 
@@ -51,24 +56,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for det in boletaD %}
                     <tr>
-                        <td>Ibuprofeno</td>
-                        <td>1</td>
-                        <td>$20.00</td>
-                        <td>$20.00</td>
+                        <td>{{det[0]}}</td>
+                        <td>{{det[1]}}</td>
+                        <td>{{det[2]}}</td>
+                        <td>{{det[3]}}</td>
                     </tr>
-                    <tr>
-                        <td>Livolin</td>
-                        <td>2</td>
-                        <td>$30.00</td>
-                        <td>$60.00</td>
-                    </tr>
-                    <tr>
-                        <td>Aspirina</td>
-                        <td>1</td>
-                        <td>$50.00</td>
-                        <td>$50.00</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
@@ -77,10 +72,9 @@
                 <div class="titulo">
                     <h1></h1>
                     <div class="opGravadas">
-                        <p>Op. Gravadas = 20</p>
-                        <p>IGV = 0.50</p>
+                        <p>IGV = {{boletaC.5}}</p>
                         <hr>
-                        <p>Total = 20 </p>
+                        <p>Total = {{boletaC.4}}</p>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@
 			<ul>
 				<li><a href="{{ url_for('menu', id=sucursal[0]) }}">Inicio</a></li>
 				<li><a href="{{ url_for('medicamentos', id=sucursal[0]) }}">Medicamentos</a></li>
-				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
+				<li><a href="">Nueva Boleta</a></li>
 				<li><a href="{{ url_for('historial', id=sucursal[0]) }}">Historial</a></li>
 			</ul>
 		</nav>
@@ -28,7 +28,7 @@
 		<section>
 			<h2>Nueva Boleta</h2>
 			<p>Aquí puedes crear una nueva boleta.</p>
-			<a href="">Ingresar</a>
+			<a href="{{ url_for('nuevaBoleta', id=sucursal[0]) }}">Ingresar</a>
 		</section>
 		<section>
 			<h2>Historial</h2>
@@ -37,5 +37,20 @@
 		</section>
 	</main>
 </body>
+
+
+
+<script>
+	document.querySelector('form').addEventListener('submit', (event) => {
+		event.preventDefault();
+		fetch('/sucursal/{{ id }}/nuevaBoleta', {
+			method: 'POST',
+			body: new FormData(document.querySelector('form'))
+		})
+			.then(response => response.text())
+			.then(responseText => console.log(responseText))
+			.catch(error => console.error(error));
+	});
+</script>
 
 </html>

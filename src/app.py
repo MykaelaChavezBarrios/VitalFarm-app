@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 import mysql.connector
+import datetime
 
 app = Flask(__name__)
+app.secret_key = "VitalFarm1234"
 
 
 def connect():
@@ -51,11 +53,6 @@ def medicamentos(id):
     )
 
 
-@app.route("/nuevaBoleta")
-def nuevaBoleta():
-    return render_template("nuevaboleta.html")
-
-
 @app.route("/sucursal/<int:id>/historial")
 def historial(id):
     mydb = connect()
@@ -84,9 +81,36 @@ def boletaExtendida(id_boleta):
     return render_template("boletaExtendida.html", boletaC=boletaC, boletaD=boletaD)
 
 
-@app.route("/agregarProducto")
-def agregarProducto():
+@app.route("/agregarproducto")
+def agregarProducto(id):
+    mydb = connect()
+    cur = mydb.cursor()
+
     return render_template("agregarproducto.html")
+
+
+@app.route("/sucursal/<int:id>/nuevaBoleta", methods=["GET", "POST"])
+def nuevaBoleta(id):
+    if request.method == "POST":
+        fecha = datetime.datetime.strptime(request.form["fecha"], "%Y-%m-%d").date()
+        dni = request.form["dni"]
+        cliente = request.form["cliente"]
+        print(f"dni: {dni}, cliente: {cliente}, id: {id}")
+        mydb = connect()
+        if mydb.is_connected():
+            print("Conexión exitosa a la base de datos")
+        else:
+            print("No se pudo conectar a la base de datos")
+        cur = mydb.cursor()
+        query = "INSERT INTO trFactura(codS, fecha, dni, nombre, igv, total) VALUES (%s, %s, %s, %s, 0, 0)"
+        values = (id, fecha, dni, cliente)
+        cur.execute(query, values)
+        rows = cur.fetchall()
+        print(rows)
+        mydb.commit()
+        cur.close()
+        mydb.close()
+    return render_template("nuevaboleta.html")
 
 
 if __name__ == "__main__":

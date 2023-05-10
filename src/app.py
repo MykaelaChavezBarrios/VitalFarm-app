@@ -61,7 +61,8 @@ def historial(id):
     facturas = cur.fetchall()
     cur.close()
     mydb.close()
-    return render_template("historial.html", facturas=facturas)
+    sucursal = [id]
+    return render_template("historial.html", facturas=facturas, sucursal=sucursal)
 
 
 @app.route("/boleta_extendida/<int:id_boleta>")
@@ -107,7 +108,7 @@ def verProductos(id, codfact):
     query = "call factDetalle(%s)"
     cur.execute(query, (codfact,))
     productos = cur.fetchall()
-    return render_template("productos_agregados.html", productos=productos)
+    return render_template("productosagregados.html", productos=productos)
 
 
 @app.route("/sucursal/<int:id>/nuevaBoleta", methods=["GET", "POST"])
@@ -140,7 +141,8 @@ def nuevaBoleta(id):
         cur.close()
         mydb.close()
         return redirect(url_for("agregarProducto", id=id, codfact=codfact))
-    return render_template("nuevaboleta.html")
+    sucursal = [id]
+    return render_template("nuevaboleta.html", sucursal=sucursal)
 
 
 if __name__ == "__main__":

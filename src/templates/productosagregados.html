@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>VitalFarm</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/nuevaboleta.css') }}">
+</head>
+
+<body>
+	<header>
+		<h1>VitalFarm</h1>
+		<nav>
+			<ul>
+				<li><a href="">Inicio</a></li>
+				<li><a href="">Medicamentos</a></li>
+				<li><a href="">Nueva Boleta</a></li>
+				<li><a href="">Historial</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="header-section">
+			<h2>Nueva Boleta</h2>
+			<div class="btn-group">
+				<button><a href="">Agregar Producto</a></button>
+				<button><a href="">Guardar</a></button>
+				<button><a href="">Cancelar</a></button>
+			</div>
+		</section>
+
+		<section class="table-section">
+			<table>
+				{% if productos %}
+				<table>
+					<tr>
+						<th>Código</th>
+						<th>Descripción</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+					</tr>
+					{% for prod in productos %}
+					<tr>
+						<td>{{ prod[0] }}</td>
+						<td>{{ prod[1] }}</td>
+						<td>{{ prod[2] }}</td>
+						<td>{{ prod[3] }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				{% endif %}
+		</section>
+
+		<br>
+	</main>
+</body>
+
+</html>

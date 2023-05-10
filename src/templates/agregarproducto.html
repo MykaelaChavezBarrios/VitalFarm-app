@@ -12,39 +12,63 @@
 		<h1>VitalFarm</h1>
 		<nav>
 			<ul>
-				<li><a href="{{ url_for('menu')}}">Inicio</a></li>
-				<li><a href="{{ url_for('medicamentos')}}">Medicamentos</a></li>
-				<li><a href="{{ url_for('nuevaBoleta')}}">Nueva Boleta</a></li>
-				<li><a href="{{ url_for('historial')}}">Historial</a></li>
+				<li><a href="">Inicio</a></li>
+				<li><a href="">Medicamentos</a></li>
+				<li><a href="">Nueva Boleta</a></li>
+				<li><a href="">Historial</a></li>
 			</ul>
 		</nav>
 	</header>
 	<section class="header-section">
 		<h2>Agregar Producto</h2>
 		<div class="btn-group">
-			<button><a href="{{ url_for('nuevaBoleta')}}">Guardar</a></button>
-			<button><a href="{{ url_for('nuevaBoleta')}}">Cancelar</a></button>
+			<button><a href="">Guardar</a></button>
+			<button><a href="">Cancelar</a></button>
 		</div>
 	</section>
 	<div class="search">
-		<form>
-			<input type="text" placeholder="Buscar...">
+		<form method="GET">
+			<input type="text" id="descripcion" name="descripcion" required placeholder="Buscar...">
 			<button type="submit">Buscar</button>
 		</form>
 	</div><br>
 	<section class="formulario">
-
 		<div class="contenedor">
-			<label for="codigo">Código:</label>
-			<input type="text" id="codigo" name="codigo">
-			<label for="descripcion">Descripción:</label>
-			<input type="text" id="descripcion" name="descripcion">
-			<label for="controlado">Controlado:</label>
-			<input type="text" id="controlado" name="controlado">
-			<label for="stock">Stock:</label>
-			<input type="text" id="stock" name="stock">
-			<label for="precio-unitario">Precio Unitario:</label>
-			<input type="text" id="precio-unitario" name="precio-unitario">
+			{{ description }}
+			{% if tabla %}
+			<form method="POST" action="{{ url_for('agregarProducto', id=id, codfact=codfact) }}">
+				<h2>Resultados de búsqueda:</h2>
+				<table>
+					<tr>
+						<th>Código</th>
+						<th>Descripción</th>
+						<th>Precio</th>
+						<th>Stock</th>
+						<th>Cantidad</th>
+					</tr>
+					{% for row in tabla %}
+					<tr>
+						<td>{{ row[0] }}</td>
+						<td>{{ row[1] }}</td>
+						<td>{{ row[2] }}</td>
+						<td>{{ row[3] }}</td>
+						<td><input type="number" name="cantidad[{{ row[0] }}]" min="0" max="{{ row[3] }}"></td>
+					</tr>
+					{% endfor %}
+				</table>
+				<button type="submit">Agregar Productos</button>
+			</form>
+			{% else %}
+			<table>
+				<tr>
+					<th>Código</th>
+					<th>Descripción</th>
+					<th>Precio</th>
+					<th>Stock</th>
+					<th>Cantidad</th>
+				</tr>
+			</table>
+			{% endif %}
 		</div>
 	</section>
 

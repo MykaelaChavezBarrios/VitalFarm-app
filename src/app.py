@@ -81,12 +81,33 @@ def boletaExtendida(id_boleta):
     return render_template("boletaExtendida.html", boletaC=boletaC, boletaD=boletaD)
 
 
-@app.route("/agregarproducto")
-def agregarProducto():
+@app.route("/sucursal/<int:id>/agregarproducto/<int:codfact>")
+def agregarProducto(id, codfact):
+    description = request.args.get("description")
+    cantidad = request.form.get("cantidad")
+    if description:
+        mydb = connect()
+        cur = mydb.cursor()
+        cur.execute("call buscar_med(%s,%s)", (description, id))
+        tabla = cur.fetchall()
+        for producto in tabla:
+            query = "call addMed(%s,%s,%s)"
+            cur.execute(query, (codfact, producto[0], cantidad))
+        mydb.commit()
+        cur.close()
+        mydb.close()
+        return redirect(url_for("verProductos", id=id, codfact=codfact))
+    return render_template("agregarproducto.html")
+
+
+@app.route("/sucursal/<int:id>/factura/<int:codfact>/productos")
+def verProductos(id, codfact):
     mydb = connect()
     cur = mydb.cursor()
-
-    return render_template("agregarproducto.html")
+    query = "call factDetalle(%s)"
+    cur.execute(query, (codfact,))
+    productos = cur.fetchall()
+    return render_template("productos_agregados.html", productos=productos)
 
 
 @app.route("/sucursal/<int:id>/nuevaBoleta", methods=["GET", "POST"])
@@ -118,7 +139,7 @@ def nuevaBoleta(id):
         print(codfact)
         cur.close()
         mydb.close()
-        return redirect(url_for("agregarProducto", codfact=codfact))
+        return redirect(url_for("agregarProducto", id=id, codfact=codfact))
     return render_template("nuevaboleta.html")
 
 

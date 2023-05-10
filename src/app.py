@@ -82,7 +82,7 @@ def boletaExtendida(id_boleta):
 
 
 @app.route("/agregarproducto")
-def agregarProducto(id):
+def agregarProducto():
     mydb = connect()
     cur = mydb.cursor()
 
@@ -105,11 +105,20 @@ def nuevaBoleta(id):
         query = "INSERT INTO trFactura(codS, fecha, dni, nombre, igv, total) VALUES (%s, %s, %s, %s, 0, 0)"
         values = (id, fecha, dni, cliente)
         cur.execute(query, values)
-        rows = cur.fetchall()
-        print(rows)
         mydb.commit()
         cur.close()
         mydb.close()
+        mydb = connect()
+        cur_2 = mydb.cursor()
+        query2 = "SELECT codF from trFactura WHERE codS = %s"
+        cur_2.execute(query2, [id])
+        codigos = cur_2.fetchall()
+        print(codigos)
+        codfact = codigos[-1][0]
+        print(codfact)
+        cur.close()
+        mydb.close()
+        return redirect(url_for("agregarProducto", codfact=codfact))
     return render_template("nuevaboleta.html")
 
 

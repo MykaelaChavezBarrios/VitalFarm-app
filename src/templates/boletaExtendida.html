@@ -16,10 +16,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Medicamentos</a></li>
-                <li><a href="">Nueva Boleta</a></li>
-                <li><a href="">Historial</a></li>
+                <li><a href="{{ url_for('menu', id=sucursal[0]) }}">Inicio</a></li>
+                <li><a href="{{ url_for('medicamentos', id=sucursal[0]) }}">Medicamentos</a></li>
+                <li><a href="{{ url_for('nuevaBoleta', id=sucursal[0]) }}">Nueva Boleta</a></li>
+                <li><a href="{{ url_for('historial', id=sucursal[0]) }}">Historial</a></li>
             </ul>
         </nav>
     </header>

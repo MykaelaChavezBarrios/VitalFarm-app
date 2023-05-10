@@ -65,8 +65,8 @@ def historial(id):
     return render_template("historial.html", facturas=facturas, sucursal=sucursal)
 
 
-@app.route("/boleta_extendida/<int:id_boleta>")
-def boletaExtendida(id_boleta):
+@app.route("/sucursal/<int:id>/boleta_extendida/<int:id_boleta>")
+def boletaExtendida(id_boleta, id):
     mydb = connect()
     cur_cab = mydb.cursor()
     cur_cab.execute("CALL factCabecera(%s)", (id_boleta,))
@@ -79,7 +79,10 @@ def boletaExtendida(id_boleta):
     boletaD = cur_det.fetchall()
     cur_det.close()
     mydb.close()
-    return render_template("boletaExtendida.html", boletaC=boletaC, boletaD=boletaD)
+    sucursal = [id]
+    return render_template(
+        "boletaExtendida.html", boletaC=boletaC, boletaD=boletaD, sucursal=sucursal
+    )
 
 
 @app.route("/sucursal/<int:id>/agregarproducto/<int:codfact>")
